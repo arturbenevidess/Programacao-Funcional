@@ -128,19 +128,32 @@ def main():
         opcao = input("Digite o número da operação que deseja realizar: ")
 
         if opcao == '1':
-            numero = float(input("Digite o número: "))
-            expoente = int(input("Digite o expoente (para raízes, digite o índice da raiz): "))
-            operacao = input("Deseja calcular 'potencia' ou 'raiz'? ").lower()
+            try:
+                numero = float(input("Digite o número: "))
+                expoente = int(input("Digite o expoente (para raízes, digite o índice da raiz): "))
+                operacao = input("Deseja calcular 'potencia' ou 'raiz'? ").lower()
 
-            # Função de alta ordem para arredondar o resultado
-            resultado = calcular_potencia_ou_raiz(numero, expoente, operacao, funcao_alta_ordem=lambda x: round(x, 2))
-            print(f"Resultado: {resultado}")
+                # Função de alta ordem para arredondar o resultado
+                resultado = calcular_potencia_ou_raiz(
+                    numero,
+                    expoente,
+                    operacao,
+                    funcao_alta_ordem=lambda x: round(x, 2),
+                )
+                print(f"Resultado: {resultado}")
+            except ValueError:
+                print("Erro: entrada inválida.")
 
         elif opcao == '2':
-            angulo = float(input("Digite o ângulo: "))
-            unidade = input("O ângulo está em 'graus' ou 'radianos'? ").lower()
-            resultados_trig = calcular_trigonometria(angulo, unidade)
-            print(f"Seno: {resultados_trig['seno']}, Cosseno: {resultados_trig['cosseno']}, Tangente: {resultados_trig['tangente']}")
+            try:
+                angulo = float(input("Digite o ângulo: "))
+                unidade = input("O ângulo está em 'graus' ou 'radianos'? ").lower()
+                resultados_trig = calcular_trigonometria(angulo, unidade)
+                print(
+                    f"Seno: {resultados_trig['seno']}, Cosseno: {resultados_trig['cosseno']}, Tangente: {resultados_trig['tangente']}"
+                )
+            except ValueError:
+                print("Erro: entrada inválida.")
 
         elif opcao == '3':
             try:
@@ -192,3 +205,7 @@ def main():
 
         else:
             print("Opção inválida. Tente novamente.")
+
+
+if __name__ == "__main__":
+    main()
