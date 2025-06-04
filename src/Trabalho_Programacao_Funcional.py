@@ -72,9 +72,11 @@ def operacoes_basicas(a, b, operacao):
 def calcular_logaritmo(numero, base=None):
     if numero <= 0:
         return "Erro: O número para logaritmo deve ser positivo."
-    
+
     if base is None:
         base = 2  # Default base é 2
+    if base <= 0 or base == 1:
+        return "Erro: A base do logaritmo deve ser positiva e diferente de 1."
 
     return f"Logaritmo de {numero} na base {base} é {round(math.log(numero, base), 5)}"
 
