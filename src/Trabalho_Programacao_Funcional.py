@@ -80,7 +80,7 @@ def calcular_logaritmo(numero, base=None):
 
     return f"Logaritmo de {numero} na base {base} é {round(math.log(numero, base), 5)}"
 
-# Giselle Bezerra: Função principal que resolve equações de segundo grau com closure e reduce
+# Giselle Bezerra: Função principal que resolve equações de segundo grau usando closure
 def resolver_equacao_segundo_grau(a, b, c):
     if a == 0:
         return "Erro: O coeficiente 'a' deve ser diferente de zero para ser uma equação de segundo grau."
