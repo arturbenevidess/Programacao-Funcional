@@ -3,6 +3,25 @@ from functools import reduce
 
 # Artur Benevides: Função para calcular potências e raízes com função de alta ordem e função para trigonometria (usando séries de Taylor e list comprehension)
 def calcular_potencia_ou_raiz(numero, expoente, operacao='potencia', funcao_alta_ordem=None):
+    """Calcula potencia ou raiz do ``numero``.
+
+    Parameters
+    ----------
+    numero : float
+        Número base para a operação.
+    expoente : int
+        Expoente ou índice da raiz.
+    operacao : str, optional
+        "potencia" para potenciação ou "raiz" para radiciação.
+    funcao_alta_ordem : callable, optional
+        Função aplicada ao resultado antes de retorná-lo.
+
+    Returns
+    -------
+    float or str
+        Resultado arredondado ou mensagem ``"Erro: ..."`` em caso de
+        valores inválidos.
+    """
     try:
         if operacao == 'potencia':
             resultado = numero ** expoente  # Função pura
@@ -25,6 +44,20 @@ def calcular_potencia_ou_raiz(numero, expoente, operacao='potencia', funcao_alta
 
 
 def calcular_trigonometria(angulo, unidade='graus'):
+    """Aplica funções trigonométricas em ``angulo``.
+
+    Parameters
+    ----------
+    angulo : float
+        Valor do ângulo em graus ou radianos.
+    unidade : str, optional
+        Indica se o ``angulo`` está em ``'graus'`` ou ``'radianos'``.
+
+    Returns
+    -------
+    dict
+        Dicionário com ``seno``, ``cosseno`` e ``tangente`` arredondados.
+    """
     if unidade == 'graus':
         angulo = math.radians(angulo)
 
@@ -47,6 +80,22 @@ def calcular_trigonometria(angulo, unidade='graus'):
 
 # Shirley Dias: Função para operações matemáticas básicas com lambda
 def operacoes_basicas(a, b, operacao):
+    """Executa uma operação aritmética simples.
+
+    Parameters
+    ----------
+    a, b : float
+        Valores de entrada para o cálculo.
+    operacao : str
+        Nome da operação entre ``'soma'``, ``'subtracao'``,
+        ``'multiplicacao'`` ou ``'divisao'``.
+
+    Returns
+    -------
+    tuple
+        Resultado da operação e lista com o histórico. Em caso de erro,
+        retorna a string ``"Operação inválida!"`` ou ``"Erro: Divisão por zero!"``.
+    """
     historico = []
 
     def salvar_no_historico(op, res):
@@ -70,6 +119,21 @@ def operacoes_basicas(a, b, operacao):
 
 # Brendo Mendes: Função para calcular logaritmo (Função pura)
 def calcular_logaritmo(numero, base=None):
+    """Retorna o logaritmo de ``numero`` na ``base`` especificada.
+
+    Parameters
+    ----------
+    numero : float
+        Valor positivo para o cálculo.
+    base : int or float, optional
+        Base do logaritmo. Quando ``None`` utiliza base 2.
+
+    Returns
+    -------
+    str
+        Mensagem com o valor do logaritmo ou uma string de erro caso
+        ``numero`` ou ``base`` sejam inválidos.
+    """
     if numero <= 0:
         return "Erro: O número para logaritmo deve ser positivo."
 
@@ -82,6 +146,19 @@ def calcular_logaritmo(numero, base=None):
 
 # Giselle Bezerra: Função principal que resolve equações de segundo grau com closure e reduce
 def resolver_equacao_segundo_grau(a, b, c):
+    """Resolve uma equação do segundo grau ``ax^2 + bx + c = 0``.
+
+    Parameters
+    ----------
+    a, b, c : float
+        Coeficientes da equação.
+
+    Returns
+    -------
+    str
+        Mensagem com as raízes ou com o erro encontrado quando ``a`` é
+        igual a zero ou o discriminante é negativo.
+    """
     if a == 0:
         return "Erro: O coeficiente 'a' deve ser diferente de zero para ser uma equação de segundo grau."
     
@@ -102,11 +179,28 @@ def resolver_equacao_segundo_grau(a, b, c):
     return calcular_raizes(discriminante)
 
 def somar_lista_numeros(lista):
-    return reduce(lambda x, y: x + y, lista) 
+    """Soma todos os elementos de ``lista`` utilizando ``reduce``.
+
+    Parameters
+    ----------
+    lista : Iterable[float]
+        Valores a serem somados.
+
+    Returns
+    -------
+    float
+        Resultado da soma dos elementos.
+    """
+    return reduce(lambda x, y: x + y, lista)
 
 
 # Função main que integra todas as funcionalidades
 def main():
+    """Interface de linha de comando da calculadora.
+
+    Sem parâmetros de entrada. Exibe um menu interativo e imprime os
+    resultados das operações escolhidas pelo usuário. Retorna ``None``.
+    """
     print("Bem-vindo à Calculadora Científica Avançada!")
     print("Esta calculadora realiza as seguintes operações:")
     print("1. Cálculo de potências e raízes")
