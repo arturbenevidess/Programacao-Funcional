@@ -5,6 +5,8 @@ from src.Trabalho_Programacao_Funcional import (
     calcular_trigonometria,
     operacoes_basicas,
     calcular_logaritmo,
+    resolver_equacao_segundo_grau,
+    somar_lista_numeros,
 )
 
 class TestFuncoesMatematicas(unittest.TestCase):
@@ -74,6 +76,43 @@ class TestFuncoesMatematicas(unittest.TestCase):
     def test_logaritmo_base_invalida(self):
         resultado = calcular_logaritmo(10, 1)
         self.assertEqual(resultado, "Erro: A base do logaritmo deve ser positiva e diferente de 1.")
+
+    def test_logaritmo_valor_16_base_2(self):
+        resultado = calcular_logaritmo(16, 2)
+        self.assertEqual(resultado, "Logaritmo de 16 na base 2 é 4.0")
+
+    def test_logaritmo_valor_1000_base_10(self):
+        resultado = calcular_logaritmo(1000, 10)
+        self.assertEqual(resultado, "Logaritmo de 1000 na base 10 é 3.0")
+
+    def test_logaritmo_numero_negativo(self):
+        resultado = calcular_logaritmo(-16, 2)
+        self.assertEqual(resultado, "Erro: O número para logaritmo deve ser positivo.")
+
+    # Caso de Teste 05 - Resolução de Equações de Segundo Grau
+    def test_equacao_segundo_grau_duas_raizes(self):
+        resultado = resolver_equacao_segundo_grau(1, -3, 2)
+        self.assertEqual(resultado, "As raízes reais são: 2.0 e 1.0")
+
+    def test_equacao_segundo_grau_uma_raiz(self):
+        resultado = resolver_equacao_segundo_grau(1, 2, 1)
+        self.assertEqual(resultado, "A equação tem uma raiz real: -1.0")
+
+    def test_equacao_segundo_grau_coeficiente_a_zero(self):
+        resultado = resolver_equacao_segundo_grau(0, 3, 2)
+        self.assertEqual(
+            resultado,
+            "Erro: O coeficiente 'a' deve ser diferente de zero para ser uma equação de segundo grau.",
+        )
+
+    # Caso de Teste 06 - Soma de uma Lista de Números
+    def test_somar_lista_numeros(self):
+        resultado = somar_lista_numeros([1, 2, 3, 4, 5])
+        self.assertEqual(resultado, 15)
+
+    def test_somar_lista_numeros_tipo_invalido(self):
+        with self.assertRaises(TypeError):
+            somar_lista_numeros([1, 2, "texto", 4])
 
 if __name__ == '__main__':
     unittest.main()
