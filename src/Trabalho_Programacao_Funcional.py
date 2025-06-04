@@ -149,3 +149,6 @@ def main():
             resultado, historico = operacoes_basicas(a, b, operacao)
             print(f"Resultado: {resultado}")
             print("Histórico de operações")
+
+if __name__ == "__main__":
+    main()
