@@ -70,12 +70,20 @@ def calcular_trigonometria(angulo, unidade='graus'):
 
     # Tangente utilizando as funções puras seno e cosseno
     def tangente(x):
-        return seno(x) / cosseno(x)
+        cos_val = cosseno(x)
+        if abs(cos_val) < 1e-10:
+            return "Indefinido"
+        return seno(x) / cos_val
+
+    seno_val = round(seno(angulo), 5)
+    cos_val = round(cosseno(angulo), 5)
+    tan_raw = tangente(angulo)
+    tan_val = tan_raw if isinstance(tan_raw, str) else round(tan_raw, 5)
 
     return {
-        'seno': round(seno(angulo), 5),
-        'cosseno': round(cosseno(angulo), 5),
-        'tangente': round(tangente(angulo), 5)
+        'seno': seno_val,
+        'cosseno': cos_val,
+        'tangente': tan_val
     }
 
 # Shirley Dias: Função para operações matemáticas básicas com lambda

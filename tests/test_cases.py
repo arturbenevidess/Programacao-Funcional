@@ -51,6 +51,10 @@ class TestFuncoesMatematicas(unittest.TestCase):
         self.assertEqual(resultados_trig['cosseno'], 1)
         self.assertEqual(resultados_trig['tangente'], 0)
 
+    def test_tangente_indefinida(self):
+        resultados_trig = calcular_trigonometria(90, 'graus')
+        self.assertEqual(resultados_trig['tangente'], "Indefinido")
+
     # Caso de Teste 03 - Operações Matemáticas Básicas
     def test_operacoes_soma(self):
         resultado, _ = operacoes_basicas(5, 3, 'soma')
