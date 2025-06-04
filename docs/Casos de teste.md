@@ -65,9 +65,9 @@
 - **Descrição:** Testa divisão por zero.
 
 #### **Cenário de Erro**
-- **Entrada:** a = 5, b = 2, operação = 'multiplicacaoo' (erro de digitação)
+- **Entrada:** a = 5, b = 2, operação = 'multiplicacao'
 - **Saída esperada:** Operação inválida!
-- **Descrição:** Testa o comportamento quando o nome da operação é digitado incorretamente.
+- **Descrição:** Testa o comportamento quando a operação informada é inválida.
 
 ---
 
