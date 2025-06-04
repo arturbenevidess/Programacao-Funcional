@@ -1,6 +1,11 @@
 
 import unittest
-from src.Trabalho_Programacao_Funcional import calcular_potencia_ou_raiz, calcular_trigonometria, operacoes_basicas
+from src.Trabalho_Programacao_Funcional import (
+    calcular_potencia_ou_raiz,
+    calcular_trigonometria,
+    operacoes_basicas,
+    calcular_logaritmo,
+)
 
 class TestFuncoesMatematicas(unittest.TestCase):
 
@@ -60,6 +65,15 @@ class TestFuncoesMatematicas(unittest.TestCase):
     def test_operacao_invalida(self):
         resultado = operacoes_basicas(5, 2, 'multiplicacaoo')
         self.assertEqual(resultado, "Operação inválida!")
+
+    # Caso de Teste 04 - Logaritmo
+    def test_logaritmo_base_padrao(self):
+        resultado = calcular_logaritmo(8)
+        self.assertIn("Logaritmo de 8 na base 2", resultado)
+
+    def test_logaritmo_base_invalida(self):
+        resultado = calcular_logaritmo(10, 1)
+        self.assertEqual(resultado, "Erro: A base do logaritmo deve ser positiva e diferente de 1.")
 
 if __name__ == '__main__':
     unittest.main()
