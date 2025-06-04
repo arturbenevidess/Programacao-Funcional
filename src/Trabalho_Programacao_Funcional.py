@@ -143,9 +143,52 @@ def main():
             print(f"Seno: {resultados_trig['seno']}, Cosseno: {resultados_trig['cosseno']}, Tangente: {resultados_trig['tangente']}")
 
         elif opcao == '3':
-            a = float(input("Digite o primeiro número: "))
-            b = float(input("Digite o segundo número: "))
-            operacao = input("Digite a operação ('soma', 'subtracao', 'multiplicacao', 'divisao'): ").lower()
-            resultado, historico = operacoes_basicas(a, b, operacao)
-            print(f"Resultado: {resultado}")
-            print("Histórico de operações")
+            try:
+                a = float(input("Digite o primeiro número: "))
+                b = float(input("Digite o segundo número: "))
+                operacao = input(
+                    "Digite a operação ('soma', 'subtracao', 'multiplicacao', 'divisao'): "
+                ).lower()
+                resultado, historico = operacoes_basicas(a, b, operacao)
+                print(f"Resultado: {resultado}")
+                print("Histórico de operações")
+                for item in historico:
+                    print(item)
+            except ValueError:
+                print("Erro: entrada inválida.")
+
+        elif opcao == '4':
+            try:
+                numero = float(input("Digite o número: "))
+                base_input = input("Digite a base (pressione Enter para base 2): ")
+                base = float(base_input) if base_input else None
+                resultado = calcular_logaritmo(numero, base)
+                print(resultado)
+            except ValueError:
+                print("Erro: entrada inválida.")
+
+        elif opcao == '5':
+            try:
+                a = float(input("Digite o coeficiente a: "))
+                b = float(input("Digite o coeficiente b: "))
+                c = float(input("Digite o coeficiente c: "))
+                resultado = resolver_equacao_segundo_grau(a, b, c)
+                print(resultado)
+            except ValueError:
+                print("Erro: entrada inválida.")
+
+        elif opcao == '6':
+            try:
+                numeros = input("Digite os números separados por espaço: ")
+                lista = [float(x) for x in numeros.split()]
+                resultado = somar_lista_numeros(lista)
+                print(f"Resultado: {resultado}")
+            except ValueError:
+                print("Erro: entrada inválida.")
+
+        elif opcao == '7':
+            print("Saindo...")
+            break
+
+        else:
+            print("Opção inválida. Tente novamente.")
